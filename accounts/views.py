@@ -9,3 +9,7 @@ class HomePageView(generic.TemplateView):
     template_name = "home_page.html"
 
 
+class SingUpPageView(generic.CreateView):
+    model = CustomUserModel
+    form_class = CustomUserCreationForm
+    template_name = "registration/signup_page.html"
