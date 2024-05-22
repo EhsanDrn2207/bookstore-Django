@@ -4,15 +4,17 @@
 {% block title %} Login page {% endblock %}
 
 {% block content %}
-	<h1>Login</h1>
+    <h1>Login</h1>
     <form action="#" method="post">
         {% csrf_token %}
-        {{ form|crispy}}
+        {{ form|crispy }}
         <button type="submit" class="btn btn-success">login</button>
     </form>
     <p>
         <a href="{% url "signup" %}">sign up</a>
         <span> | </span>
         <a href="{% url "password_change" %}">change password</a>
+        <span> | </span>
+        <a href="{% url "password_reset" %}">forgot your password?</a>
     </p>
 {% endblock %}
