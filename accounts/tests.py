@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 
 from .models import CustomUserModel
 
+
 class HomePageTest(TestCase):
     def test_home_page_url(self):
         response = self.client.get("")

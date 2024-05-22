@@ -40,6 +40,10 @@ INSTALLED_APPS = [
 
     # local apps
     "accounts",
+
+    # crispy form
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -133,3 +137,7 @@ LOGIN_REDIRECT_URL = "home_page"
 
 # Logout redirect
 LOGOUT_REDIRECT_URL = "home_page"
+
+# crispy form config
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
