@@ -11,5 +11,6 @@
             <p>{{ book.author }}</p>
             <p>{{ book.cost }}</p>
     {% endfor %}
+    <a href="{% url "book_create" %}">ایحاد کتاب جدید</a>
     
 {% endblock %}
