@@ -9,6 +9,11 @@
     <p>{{ book.text }}</p>
     <p>{{ book.author }}</p>
     <p>{{ book.cost }}</p>
+    <p>
+        <a href="{% url "book_update" book.id %}">تغییر اطلاعات کتاب </a>
+        <span> | </span>
+        <a href="{% url "book_delete" book.id %}"> حذف کتاب </a>
+    </p>
 
     <a href="{% url "book_list" %}">لیست کتاب ها</a>
 {% endblock %}

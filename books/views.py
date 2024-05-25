@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views import generic
 
 from .models import Book
+from .forms import BookForm
+from django.urls import reverse, reverse_lazy
 
 
 class BookList(generic.ListView):
@@ -20,3 +22,17 @@ class BookCreate(generic.CreateView):
     model = Book
     template_name = "books/book_create.html"
     fields = ["title", "text", "author", "cost"]
+
+
+class BookUpdate(generic.UpdateView):
+    model = Book
+    form_class = BookForm
+    template_name = "books/book_update.html"
+
+
+class BookDelete(generic.DeleteView):
+    model = Book
+    template_name = "books/book_delete.html"
+
+    def get_success_url(self):
+        return reverse("book_list")
