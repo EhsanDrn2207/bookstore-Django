@@ -3,6 +3,7 @@ from django.urls import reverse
 
 from .models import Book
 
+
 class TestBooks(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -63,3 +64,50 @@ class TestBooks(TestCase):
     def test_book_detail_template_used(self):
         response = self.client.get(reverse("book_detail", args=[self.book1.id]))
         self.assertTemplateUsed(response, "books/book_detail.html")
+
+    def test_book_create_url(self):
+        response = self.client.get("/books/create/")
+        self.assertEqual(response.status_code, 200)
+
+    def test_book_create_name(self):
+        response = self.client.get(reverse("book_create"))
+        self.assertEqual(response.status_code, 200)
+
+    def test_book_create_form(self):
+        response = self.client.post(path=reverse("book_create"), data={
+            "title": "title2",
+            "text": "text2",
+            "author": "author2",
+            "cost": 222.222,
+        })
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Book.objects.last().title, "title2")
+        self.assertEqual(Book.objects.last().text, "text2")
+        self.assertEqual(Book.objects.last().author, "author2")
+        self.assertEqual(float(Book.objects.last().cost), 222.222)
+
+    def test_book_create_template_used(self):
+        response = self.client.get(reverse("book_create"))
+        self.assertTemplateUsed(response, "books/book_create.html")
+
+    def test_book_update_url(self):
+        response = self.client.get(f"/books/{self.book1.id}/update/")
+        self.assertEqual(response.status_code, 200)
+
+    def test_book_update_name(self):
+        response = self.client.get(reverse("book_update", args=[self.book1.id]))
+        self.assertEqual(response.status_code, 200)
+
+    def test_book_update_view(self):
+        response = self.client.post(path=reverse("book_update", args=[self.book1.id]), data={
+            "title": "title3",
+            "text": "text3",
+            "author": "author3",
+            "cost": 333.333
+        })
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Book.objects.first().title, "title3")
+        self.assertEqual(Book.objects.first().text, "text3")
+        self.assertEqual(Book.objects.first().author, "author3")
+        self.assertEqual(float(Book.objects.first().cost), 333.333)
+
