@@ -124,9 +124,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
-
-STATIC_URL = 'static/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -136,10 +133,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "accounts.CustomUserModel"
 
 # Login redirect
-LOGIN_REDIRECT_URL = "home_page"
+LOGIN_REDIRECT_URL = "book_list"
 
 # Logout redirect
-LOGOUT_REDIRECT_URL = "home_page"
+LOGOUT_REDIRECT_URL = "book_list"
 
 # crispy form config
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -147,3 +144,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Email backend
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# static files config
+STATIC_URL = "/static/"
+STATIC_ROOT = str(BASE_DIR.joinpath("static"))
