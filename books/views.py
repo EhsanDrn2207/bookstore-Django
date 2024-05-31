@@ -10,6 +10,7 @@ class BookList(generic.ListView):
     model = Book
     template_name = "books/book_list.html"
     context_object_name = "books"
+    paginate_by = 4
 
 
 class BookDetail(generic.DetailView):
