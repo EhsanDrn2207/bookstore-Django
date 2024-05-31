@@ -9,7 +9,7 @@ class Book(models.Model):
     translator = models.CharField(max_length=50, blank=True)
     publication = models.CharField(max_length=50, blank=True)
     cost = models.DecimalField(max_digits=6, decimal_places=3)
-    cover = models.ImageField(upload_to="covers", blank=True)
+    cover = models.ImageField(upload_to="covers/", blank=True)
 
     def __str__(self):
         return self.title
