@@ -20,7 +20,7 @@
                                     <h3 class="card-title"><strong>
                                         <a href="{% url "book_detail" book.id %}">{{ book.title }}</a>
                                     </strong></h3>
-                                    <p class="card-text pt-3">{{ book.text }}</p>
+                                    <p class="card-text pt-3">{{ book.text|truncatewords:15 }}</p>
                                     <p class="text-muted">نویسنده: {{ book.author }}</p>
                                 </div>
                             </div>
